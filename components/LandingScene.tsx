@@ -2,6 +2,9 @@
 
 import { motion } from "framer-motion";
 import { useMemo } from "react";
+import { OWNER_NAME, OWNER_SUBTITLE } from "../lib/constants";
+import { fadeInDown, fadeIn, fadeInUp } from "../lib/animations";
+import NeonButton from "./ui/NeonButton";
 
 interface LandingSceneProps {
   onEnter: () => void;
@@ -32,7 +35,6 @@ export default function LandingScene({ onEnter }: LandingSceneProps) {
 
   return (
     <div className="relative w-full h-screen bg-black overflow-hidden flex flex-col items-center justify-center">
-      {/* CSS star field */}
       <style>{`
         @keyframes twinkle {
           0%, 100% { opacity: 0.2; transform: scale(1); }
@@ -54,37 +56,32 @@ export default function LandingScene({ onEnter }: LandingSceneProps) {
         />
       ))}
 
-      {/* Title */}
       <motion.h1
         className="relative z-10 text-5xl md:text-7xl font-bold text-white tracking-widest text-center drop-shadow-[0_0_30px_rgba(139,92,246,0.8)]"
-        initial={{ opacity: 0, y: -40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
+        {...fadeInDown}
       >
-        Daanish Nair
+        {OWNER_NAME}
       </motion.h1>
 
       <motion.p
         className="relative z-10 mt-4 text-lg md:text-xl text-purple-300 tracking-[0.3em] uppercase text-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+        initial={fadeIn.initial}
+        animate={fadeIn.animate}
+        transition={{ ...fadeIn.transition, delay: 0.5 }}
       >
-        Full-Stack Engineer
+        {OWNER_SUBTITLE}
       </motion.p>
 
-      {/* Enter Universe button */}
-      <motion.button
-        onClick={onEnter}
-        className="relative z-10 mt-12 px-8 py-3 border border-purple-500 text-purple-300 rounded-full tracking-widest uppercase text-sm font-semibold transition-all duration-300 hover:bg-purple-500 hover:text-white hover:shadow-[0_0_20px_rgba(139,92,246,0.8)] focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-black"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1, ease: "easeOut" }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.97 }}
+      <motion.div
+        className="relative z-10 mt-12"
+        initial={fadeInUp.initial}
+        animate={fadeInUp.animate}
+        transition={{ ...fadeInUp.transition, delay: 1, duration: 1 }}
       >
-        Enter Universe
-      </motion.button>
+        <NeonButton onClick={onEnter} color="purple">
+          Enter Universe
+        </NeonButton>
+      </motion.div>
     </div>
   );
 }

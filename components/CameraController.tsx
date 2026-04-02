@@ -3,15 +3,18 @@
 import { useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { Vector3 } from "three";
+import {
+  CAMERA_LERP_FACTOR,
+  CAMERA_ZOOM_THRESHOLD,
+  CAMERA_MIN_DISTANCE,
+  CAMERA_MAX_DISTANCE,
+} from "../lib/constants";
 
 interface CameraControllerProps {
   targetPosition: [number, number, number] | null;
   isZooming: boolean;
   onZoomComplete: () => void;
 }
-
-const ZOOM_THRESHOLD = 2;
-const LERP_FACTOR = 0.05;
 
 export default function CameraController({
   targetPosition,
@@ -22,11 +25,9 @@ export default function CameraController({
 
   useFrame(() => {
     if (!isZooming || !targetPosition) return;
-
     const target = new Vector3(...targetPosition);
-    camera.position.lerp(target, LERP_FACTOR);
-
-    if (camera.position.distanceTo(target) < ZOOM_THRESHOLD) {
+    camera.position.lerp(target, CAMERA_LERP_FACTOR);
+    if (camera.position.distanceTo(target) < CAMERA_ZOOM_THRESHOLD) {
       onZoomComplete();
     }
   });
@@ -34,8 +35,8 @@ export default function CameraController({
   return (
     <OrbitControls
       enabled={!isZooming}
-      minDistance={5}
-      maxDistance={40}
+      minDistance={CAMERA_MIN_DISTANCE}
+      maxDistance={CAMERA_MAX_DISTANCE}
     />
   );
 }
