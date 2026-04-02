@@ -1,52 +1,40 @@
-import { Project } from "../types";
+﻿import { Project } from "../types";
 
 export const PROJECTS: Project[] = [
   {
-    id: "project-1",
-    name: "Project Alpha",
-    description: "A full-stack web application for task management with real-time collaboration features.",
-    techStack: ["React", "Node.js", "PostgreSQL"],
+    id: "soho-jewels",
+    name: "Soho Jewels",
+    description: "A luxury eCommerce platform for jewellery with Stripe payments, admin dashboard, customer reviews, and 2FA.",
+    techStack: ["Next.js 14", "Prisma", "PostgreSQL", "Stripe", "Cloudinary", "NextAuth.js", "Tailwind CSS"],
     links: {
-      github: "https://github.com/example/alpha",
-      live: "https://alpha.example.com",
+      github: "https://github.com/Daanish4237/Commerce-Website",
+      live: "https://soho-jewels-beta.vercel.app/",
     },
     position: [-6, 2, -4],
-    color: "#4f46e5",
+    color: "#f59e0b",
   },
   {
-    id: "project-2",
-    name: "Project Beta",
-    description: "A machine learning dashboard for visualizing and exploring large datasets interactively.",
-    techStack: ["Python", "FastAPI", "React", "D3.js"],
+    id: "bus-tracking",
+    name: "Bus Tracking System",
+    description: "Real-time bus tracking for passengers — view routes, select drop-off stops, and see live GPS bus locations updating every 10 seconds.",
+    techStack: ["TypeScript", "Vite", "Node.js", "Express", "Vitest"],
     links: {
-      github: "https://github.com/example/beta",
-      live: "https://beta.example.com",
+      github: "https://github.com/Daanish4237/bus-tracking-system",
+      live: "https://bus-tracking-system-wheat.vercel.app/",
     },
     position: [5, -1, -6],
     color: "#06b6d4",
   },
   {
-    id: "project-3",
-    name: "Project Gamma",
-    description: "A mobile-first e-commerce platform with seamless checkout and inventory management.",
-    techStack: ["Next.js", "Stripe", "MongoDB", "Tailwind CSS"],
+    id: "taskflow",
+    name: "TaskFlow",
+    description: "A productivity web app with task management, time tracking, goal setting, team collaboration, and an analytics dashboard.",
+    techStack: ["PHP 8.2", "MySQL", "JavaScript", "Chart.js", "HTML5", "CSS3"],
     links: {
-      github: "https://github.com/example/gamma",
-      live: "https://gamma.example.com",
+      github: "https://github.com/Daanish4237/Goal-Tracking-Website",
+      live: "",
     },
     position: [2, 4, -8],
     color: "#10b981",
-  },
-  {
-    id: "project-4",
-    name: "Project Delta",
-    description: "A real-time multiplayer game built with WebSockets and a custom physics engine.",
-    techStack: ["TypeScript", "Socket.io", "Canvas API", "Express"],
-    links: {
-      github: "https://github.com/example/delta",
-      live: "https://delta.example.com",
-    },
-    position: [-3, -3, -5],
-    color: "#f59e0b",
   },
 ];
