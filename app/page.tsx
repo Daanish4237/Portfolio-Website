@@ -1,5 +1,7 @@
 'use client';
 
+export const dynamic = 'force-dynamic';
+
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Project } from '../types';
