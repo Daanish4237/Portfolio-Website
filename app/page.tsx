@@ -41,12 +41,11 @@ export default function Home() {
             <GalaxyCanvas
               onSelectProject={(project) => {
                 setSelectedProject(project);
-                setIsZooming(true);
-                setTargetPosition(project.position);
+                // Skip zoom — show overlay immediately
               }}
               onZoomComplete={() => setIsZooming(false)}
-              targetPosition={targetPosition}
-              isZooming={isZooming}
+              targetPosition={null}
+              isZooming={false}
             />
             {/* Home button */}
             <button
