@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent, within } from "@testing-library/react";
 import * as fc from "fast-check";
 import ProjectOverlay from "./ProjectOverlay";
-import type { Project } from "@/types";
+import type { Project } from "../types";
 
 // Shared arbitrary for non-blank strings
 const nonBlankString = (min = 1, max = 60) =>

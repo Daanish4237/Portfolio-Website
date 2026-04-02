@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import * as fc from "fast-check";
 import Planet from "./Planet";
-import type { Project } from "@/types";
+import type { Project } from "../types";
 
 const mockProject: Project = {
   id: "test-1",
