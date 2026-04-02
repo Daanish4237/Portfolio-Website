@@ -48,6 +48,16 @@ export default function Home() {
               targetPosition={targetPosition}
               isZooming={isZooming}
             />
+            {/* Home button */}
+            <button
+              onClick={() => {
+                handleBack();
+                setScene('landing');
+              }}
+              className="fixed top-4 left-4 z-20 px-4 py-2 rounded-full border border-purple-500 text-purple-300 text-sm font-semibold tracking-wide bg-black/40 backdrop-blur-sm transition-all duration-300 hover:bg-purple-500 hover:text-white hover:shadow-[0_0_16px_rgba(139,92,246,0.8)]"
+            >
+              ← Home
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
