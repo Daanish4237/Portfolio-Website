@@ -24,12 +24,17 @@ export default function GalaxyCanvas({
     <Canvas
       dpr={[1, 2]}
       camera={{ position: [0, 0, 20], fov: 60 }}
+      style={{ background: "#000010" }}
       fallback={
         <div className="flex items-center justify-center w-full h-full text-white bg-black">
           Your browser does not support WebGL. Please try a modern browser.
         </div>
       }
     >
+      <color attach="background" args={["#000010"]} />
+      <ambientLight intensity={0.3} />
+      <pointLight position={[10, 10, 10]} intensity={1.5} />
+      <pointLight position={[-10, -10, -10]} intensity={0.5} />
       <Stars />
       {PROJECTS.slice(0, 5).map((project) => (
         <Planet key={project.id} project={project} onSelect={onSelectProject} />
