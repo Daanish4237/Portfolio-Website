@@ -145,7 +145,7 @@ export default function Planet({ project, onSelect, radius = 2 }: PlanetProps) {
         metalness={0.15}
       />
       {hovered && (
-        <Html center distanceFactor={10}>
+        <Html center>
           <div style={{
             color: "white",
             background: "rgba(0,0,0,0.75)",
@@ -157,7 +157,7 @@ export default function Planet({ project, onSelect, radius = 2 }: PlanetProps) {
             border: `1px solid ${project.color}`,
             boxShadow: `0 0 12px ${project.color}`,
             letterSpacing: "0.05em",
-            transform: "translateY(-20px)",
+            
           }}>
             {project.name}
           </div>
@@ -166,3 +166,5 @@ export default function Planet({ project, onSelect, radius = 2 }: PlanetProps) {
     </mesh>
   );
 }
+
+
