@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Html } from "@react-three/drei";
 import type { Mesh } from "three";
-import type { Project } from "@/types";
+import type { Project } from "../types";
 
 interface PlanetProps {
   project: Project;

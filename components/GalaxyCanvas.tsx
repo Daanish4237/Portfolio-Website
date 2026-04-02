@@ -5,7 +5,7 @@ import { Stars } from "@react-three/drei";
 import { PROJECTS } from "../data/projects";
 import Planet from "./Planet";
 import CameraController from "./CameraController";
-import type { Project } from "@/types";
+import type { Project } from "../types";
 
 interface GalaxyCanvasProps {
   onSelectProject: (project: Project) => void;
