@@ -110,18 +110,17 @@ const PLANET_TYPES = ["mars", "jupiter", "neptune", "lava", "neptune"];
 export default function Planet({ project, onSelect, radius = 2 }: PlanetProps) {
   const meshRef = useRef<Mesh>(null);
   const [hovered, setHovered] = useState(false);
-  const [clicked, setClicked] = useState(false);
 
   const type = PLANET_TYPES[Math.abs(project.id.charCodeAt(0)) % PLANET_TYPES.length];
   const texture = useMemo(() => createPlanetTexture(type, project.color), [type, project.color]);
 
-  useFrame((_, delta) => {
+  useFrame(() => {
     if (!meshRef.current) return;
     meshRef.current.rotation.y += 0.008;
     meshRef.current.rotation.x += 0.001;
-    // Smooth scale spring
-    const targetScale = clicked ? 1.4 : hovered ? 1.15 : 1;
-    meshRef.current.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.12);
+    // Simple instant scale — no lerp lag
+    const targetScale = hovered ? 1.15 : 1;
+    meshRef.current.scale.set(targetScale, targetScale, targetScale);
   });
 
   return (
@@ -130,11 +129,7 @@ export default function Planet({ project, onSelect, radius = 2 }: PlanetProps) {
       position={project.position}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
-      onClick={() => {
-        setClicked(true);
-        setTimeout(() => setClicked(false), 300);
-        onSelect(project);
-      }}
+      onClick={() => onSelect(project)}
     >
       <sphereGeometry args={[radius, 64, 64]} />
       <meshStandardMaterial
@@ -146,19 +141,23 @@ export default function Planet({ project, onSelect, radius = 2 }: PlanetProps) {
       />
       {hovered && (
         <Html center>
-          <div style={{
-            color: "white",
-            background: "rgba(0,0,0,0.75)",
-            padding: "6px 14px",
-            borderRadius: "20px",
-            whiteSpace: "nowrap",
-            fontSize: "15px",
-            fontWeight: 700,
-            border: `1px solid ${project.color}`,
-            boxShadow: `0 0 12px ${project.color}`,
-            letterSpacing: "0.05em",
-            
-          }}>
+          <div
+            onClick={() => onSelect(project)}
+            style={{
+              color: "white",
+              background: "rgba(0,0,0,0.75)",
+              padding: "6px 14px",
+              borderRadius: "20px",
+              whiteSpace: "nowrap",
+              fontSize: "15px",
+              fontWeight: 700,
+              border: `1px solid ${project.color}`,
+              boxShadow: `0 0 12px ${project.color}`,
+              letterSpacing: "0.05em",
+              cursor: "pointer",
+              userSelect: "none",
+            }}
+          >
             {project.name}
           </div>
         </Html>
