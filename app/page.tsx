@@ -4,10 +4,12 @@ export const dynamic = 'force-dynamic';
 
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import nextDynamic from 'next/dynamic';
 import { Project } from '../types';
 import LandingScene from '../components/LandingScene';
-import GalaxyCanvas from '../components/GalaxyCanvas';
 import ProjectOverlay from '../components/ProjectOverlay';
+
+const GalaxyCanvas = nextDynamic(() => import('../components/GalaxyCanvas'), { ssr: false });
 
 export default function Home() {
   const [scene, setScene] = useState<'landing' | 'galaxy'>('landing');
