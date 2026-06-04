@@ -1,4 +1,4 @@
-﻿tfff"use client";
+﻿"use client";
 
 import { useRef, useState, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
