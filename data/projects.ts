@@ -49,4 +49,16 @@ export const PROJECTS: Project[] = [
     position: [-3, -3, -5],
     color: "#a855f7",
   },
+  {
+    id: "dragonforge-pcs",
+    name: "DragonForge PCs",
+    description: "Business landing page for a custom PC builder — showcases hand-assembled gaming rigs and workstations, with direct WhatsApp inquiry integration.",
+    techStack: ["HTML5", "CSS3", "JavaScript"],
+    links: {
+      github: "https://github.com/Daanish4237/Business-Website",
+      live: "https://dragonforgepcs.vercel.app/",
+    },
+    position: [0, -4, -3],
+    color: "#ef4444",
+  },
 ];
